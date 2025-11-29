@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>PedalCast</title>
+  <meta name="author" content="PedalCast" />
+  <meta name="description" content="Ride, Sweat, Connect! PedalCast lets you ride your Peloton without a subscription and sync your stats to Strava and other platforms." />
+
+  <!-- Open Graph (for social sharing) -->
+  <meta property="og:url" content="https://pedalcast.app/" />
+  <meta property="og:site_name" content="PedalCast" />
+  <meta property="og:title" content="PedalCast" />
+  <meta property="og:type" content="website" />
+  <!-- Local hero image -->
+  <meta property="og:image" content="images/hero.webp" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PedalCast" />
+  <meta name="twitter:description" content="Ride, Sweat, Connect!" />
+  <meta name="twitter:image" content="images/hero.webp" />
+  <meta name="twitter:image:alt" content="Cyclist training indoors" />
+
+  <!-- Simple favicon (local) -->
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+
+  <!-- Basic styling, no external resources -->
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #111;
+      --text: #f5f5f5;
+      --accent: #ff4b3a;
+      --accent-soft: rgba(255, 75, 58, 0.15);
+      --muted: #aaaaaa;
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header.hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.85)),
+        url("images/hero.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .tagline {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      max-width: 30rem;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s ease, border-color 0.18s ease,
+        transform 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #ff6a52;
+      border-color: #ff6a52;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    main {
+      background: var(--bg-alt);
+      padding: 2.5rem 1.5rem 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .content {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .content h2 {
+      font-size: 1.4rem;
+      margin: 0 0 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .feature-bullet {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin-top: 0.45rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #050505;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        padding: 3rem 2rem 3.5rem;
+      }
+
+      .content {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .content-copy {
+        flex: 2;
+      }
+
+      .content-aside {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header.hero {
+        padding: 2.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo">PedalCast</div>
+
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Coming soon
+      </div>
+
+      <h1 class="tagline">Ride, Sweat, Connect!</h1>
+
+      <p class="subtitle">
+        Use your Peloton’s Just Ride mode without a subscription and sync your
+        rides to Strava and other platforms you love.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="#notify">
+          Get launch updates
+        </a>
+        <a class="btn btn-ghost" href="#learn-more">
+          Learn more
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <section class="content-copy" id="learn-more">
+        <h2>Take your rides wherever you train.</h2>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-bullet"></span>
+            <span>
+              <strong>Peloton Just Ride, no subscription.</strong>
+              Capture power, cadence, and distance from your bike even without
+              the full Peloton membership.
+            </span>
+          </li>
+          <li>
+            <span class="feature-bullet"></span>
+            <span>
+              <strong>Sync to Strava and beyond.</strong>
+              Push your rides to Strava (and later Zwift and other platforms)
+              so all your training lives in one place.
+            </span>
+          </li>
+          <li>
+            <span class="feature-bullet"></span>
+            <span>
+              <strong>Simple device + app combo.</strong>
+              A small bridge device plus an easy app—no complicated setup or
+              hacking your bike firmware.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <aside class="content-aside" id="notify">
+        <h2>Stay in the loop</h2>
+        <p style="font-size:0.95rem; color:var(--muted); line-height:1.7;">
+          We’re still building PedalCast. If you want to be notified when we
+          open early access, bookmark this page or follow us on your favorite
+          training platforms.
+        </p>
+        <!-- Later you can swap this for a real email form or link -->
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    Copyright © 2025 PedalCast – All rights reserved.
+  </footer>
+</body>
+</html>
